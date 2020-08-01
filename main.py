@@ -21,20 +21,37 @@ def allowed_file(filename):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            img = Image.open('static/images/' + filename)
-            text = tess.image_to_string(img, lang='tel')
-            src = '../static/images/' + filename
-            return render_template('success.html', filename=filename, text=text, img=img, src=src)
+        if request.form.get("Telugu"):
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                img = Image.open('static/images/' + filename)
+                text = tess.image_to_string(img, lang='tel')
+                src = '../static/images/' + filename
+                return render_template('success.html', filename=filename, text=text, img=img, src=src)
+        elif request.form.get("English"):
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                img = Image.open('static/images/' + filename)
+                text = tess.image_to_string(img, lang='eng')
+                src = '../static/images/' + filename
+                return render_template('success.html', filename=filename, text=text, img=img, src=src)
+
     return render_template('index.html')
 
 
