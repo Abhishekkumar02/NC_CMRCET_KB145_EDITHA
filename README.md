@@ -7,6 +7,7 @@
 * Harshita Madhok
 *	Abishek Khatri
 *	Vaibhav Kumar
+*	Ashish
 
 > Team Mentor
 * Shobhit Bhatnagar
@@ -24,7 +25,7 @@ open terminal in linux or command prompt in windows
 * start the server
 	* linux
 		> ./main.sh
-	* windown
+	* windows
 		> main.bat (to be created)
 
 * open url http://127.0.0.1:5000 on your web browser
