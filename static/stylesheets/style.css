@@ -60,14 +60,14 @@ hr {
 /* upload btn animation */
 
 .upload {
-    --background: rgb(24, 224, 141);
+    --background: #32a852;
     --text-drop: #fff;
     --text-upload: #fff;
     --progress-color: #fff;
     --check-color: var(--text-upload);
     --border-radius: 30px;
-    width: 400px;
-    height: 250px;
+    width: 25rem;
+    height: 6.25rem;
     position: relative;
     display: flex;
     justify-content: center;
@@ -103,7 +103,7 @@ hr {
 
 .upload .text {
     position: absolute;
-    font-size: 21px;
+    font-size: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
