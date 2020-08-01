@@ -7,11 +7,7 @@
 * Harshita Madhok
 *	Abhishek Khatri
 *	Vaibhav Kumar
-<<<<<<< HEAD
 * Ashish
-=======
-*	Ashish
->>>>>>> 92227621d41d42ef864bd86fd57141d8744ad97e
 
 > Team Mentor
 * Shobhit Bhatnagar
