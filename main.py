@@ -20,7 +20,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    # print("ARGS:",request.form,"---")
+    # print("ARGS:",request.args,"---")
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
@@ -30,22 +30,44 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            img = Image.open('static/images/' + filename)
+            if pdf_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                app.logger.info('File name  %s', filename)
+                pdf_data = 'static/images/'+ filename
+                pdf_text=""
+                langToProcess = ""
+                pages = convert_from_path(pdf_data, poppler_path= r'poppler/bin')
+                if request.form.get("English"):
+                    langToProcess = 'eng'
+                elif request.form.get("Telugu"):
+                    langToProcess = 'tel'
+                else:
+                    langToProcess = 'urdu'
+                for page in pages:
+                    app.logger.info('Text  %s', pdf_text)
 
-            # set language for processing
-            if request.form.get('Telugu'):
-                langToProcess = 'tel'
-            elif request.form.get('English'):
-                langToProcess = 'eng'
+                    text = tess.image_to_string(page, lang =langToProcess)
+                    pdf_text += text
+                    
+                return render_template('success.html', filename = filename, text=pdf_text)
             else:
-                langToProcess = 'urdu'
 
-            text = tess.image_to_string(img, lang=langToProcess)
-            src = '../static/images/' + filename
-            return text
-            # return render_template('success.html', filename=filename, text=text, img=img, src=src)
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                img = Image.open('static/images/' + filename)
+
+                # set language for processing
+                if request.form.get("English"):
+                    langToProcess = 'eng'
+                elif request.form.get("Telugu"):
+                    langToProcess = 'tel'
+                else:
+                    langToProcess = 'urdu'
+
+                text = tess.image_to_string(img, lang=langToProcess)
+                src = '../static/images/' + filename
+                return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
 
 
