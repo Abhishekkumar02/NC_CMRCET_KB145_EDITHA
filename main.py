@@ -48,6 +48,7 @@ def upload_file():
                     for page in pages:
                         text = tess.image_to_string(page, lang='tel')
                         text+=text
+                        app.logger.info('Text  %s', text)
                     return render_template('success.html', filename=filename, text=text)
                 else:    
                     filename = secure_filename(file.filename)
@@ -55,6 +56,7 @@ def upload_file():
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                     img = Image.open('static/images/' + filename) 
                     text = tess.image_to_string(img, lang='tel')
+                    app.logger.info('Text  %s', text)
                     src = '../static/images/' + filename
                     return render_template('success.html', filename=filename, text=text, img=img, src=src)
         elif request.form.get("English"):
@@ -70,6 +72,7 @@ def upload_file():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 img = Image.open('static/images/' + filename)
                 text = tess.image_to_string(img, lang='eng')
+                app.logger.info('Text  %s', text)
                 src = '../static/images/' + filename
                 return render_template('success.html', filename=filename, text=text, img=img, src=src)
 
