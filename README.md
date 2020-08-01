@@ -5,7 +5,7 @@
 * Abishek Kumar (Team Leader)
 * Ritik Gupta
 * Harshita Madhok
-*	Abishek Khatr
+*	Abishek Khatri
 *	Vaibhav Kumar
 
 > Team Mentor
