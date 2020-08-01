@@ -5,10 +5,9 @@
 * Abhishek Kumar (Team Leader)
 * Ritik Gupta
 * Harshita Madhok
-* Abhishek Khatri
-* Vaibhav Kumar
+*	Abhishek Khatri
+*	Vaibhav Kumar
 * Ashish
-
 
 > Team Mentor
 * Shobhit Bhatnagar
@@ -27,11 +26,7 @@ open terminal in linux or command prompt in windows
 	* linux
 		> ./main.sh
 	* windows
-
-		> main.bat (to be created)
-
 		> main.bat
-
 
 * open url http://127.0.0.1:5000 on your web browser
 
