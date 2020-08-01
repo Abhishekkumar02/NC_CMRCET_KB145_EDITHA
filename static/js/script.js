@@ -12,6 +12,16 @@
 // after loading document
 window.onload = function() {
 
+	/*-----------------------------------VARIABLES----------------------------------------*/
+	
+	const DEBUG = {
+		Log: false,
+		Error: true
+	};
+	console.log("Welcome to EDITHA KB145 PS 😉")
+	
+	/*-------------------------------EVENT LISTENETRS-------------------------------------*/
+	
 	/*
 		get all submit button
 		like upload english and upload telugu
@@ -22,8 +32,26 @@ window.onload = function() {
 		element.addEventListener ( "click", fetchResult )
 	})
 
-	document.getElementById("img").addEventListener("change", handleSelectImage)
+	document.getElementById("img").addEventListener ( "change", handleSelectImage )
 	
+	/*-----------------------------------FUNCTIONS----------------------------------------*/
+
+	/*
+		Detect file select changes and update status
+	*/
+	function handleSelectImage( event ) {
+		
+		let statusElement = document.querySelector(".text.text-upload")
+		let choosenFile = event.srcElement.files[0]
+		
+		statusElement.innerHTML = "File: "+choosenFile.name
+
+		// show filename
+		this.parentElement.classList.add("drop");
+		this.parentElement.classList.remove("drag");
+		
+	}
+
 	/*
 		get the click event of input button
 		and make a ajax request to the server
@@ -33,8 +61,9 @@ window.onload = function() {
 		// stop default operation
 		event.preventDefault();
 
-		button = event.srcElement
-		fileToUplaod = document.getElementById("img").files[0]
+		let button = event.srcElement
+		let statusElement = document.querySelector(".text.text-upload")
+		let fileToUplaod = document.getElementById("img").files[0]
 
 		let formData = new FormData()
 
@@ -48,11 +77,23 @@ window.onload = function() {
 
 			function handleProgress ( event ) {
 				let percentage = (event.loaded/event.total)*100
-				console.log("Uploading: ", percentage)
+				statusElement.innerHTML = 'Uploading File: '+parseInt(percentage)+'%'
 			},
 
 			function handleUploaded ( event ) {
-				console.log("done upload")
+				statusElement.parentElement.classList.add("done")
+
+				// show waiting after uploading image
+				// and tick animation is over
+				setTimeout(function startWaiting() {
+					statusElement.innerHTML = "Waiting For Result..."
+					statusElement.parentElement.classList.remove("done")
+				}, 2000)
+
+				if ( DEBUG.Log ) {
+					console.log("doone uploading")
+				}
+				
 			}
 		)
 		
@@ -60,12 +101,25 @@ window.onload = function() {
 		send(formData)
 		.then(
 			function handleResponse( responseText ) {
-				console.log ( responseText )
+				
+				// reverse back the upload status
+				statusElement.innerHTML = ""
+				statusElement.parentElement.classList.remove("done")
+				statusElement.parentElement.classList.remove("drop")
+
+				// do something for displaying the result
+				
+				if ( DEBUG.Log ) {
+					console.log ( responseText )
+				}
+				
 			}
 		)
 		.catch(
 			function handleError( status ) {
-				console.error ( status )
+				if ( DEBUG.Error ) {
+					console.error ( "Failed to get result", status, "😥" )
+				}
 			}
 		)
 		
