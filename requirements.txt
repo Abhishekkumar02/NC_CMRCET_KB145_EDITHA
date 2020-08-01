@@ -2,3 +2,4 @@ Flask==1.0.2
 pytesseract==0.3.4
 Werkzeug
 Pillow
+pdf2image
