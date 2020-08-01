@@ -1,0 +1,23 @@
+  <h1>Upload new File</h1>
+    <!-- enctype defines how your form data will be encoded -->
+    <!-- multipart/form-data means no characters are encoded. -->
+    <!-- This is usually used when you are using forms to upload a file -->
+    <div>
+    <form method="post" enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+ <h1>Upload new File</h1>
+    <p>Success, upload {{filename}}</p>
+    <img src="{{src}}">
+<p style="width:30%">{{ text }}</p>
+
