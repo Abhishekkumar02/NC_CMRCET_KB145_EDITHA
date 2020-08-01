@@ -26,7 +26,7 @@ open terminal in linux or command prompt in windows
 	* linux
 		> ./main.sh
 	* windows
-		> main.bat (to be created)
+		> main.bat
 
 * open url http://127.0.0.1:5000 on your web browser
 
