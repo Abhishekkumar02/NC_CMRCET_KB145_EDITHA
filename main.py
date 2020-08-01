@@ -20,6 +20,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    print("ARGS:",request.args,"---")
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
@@ -32,7 +33,16 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             img = Image.open('static/images/' + filename)
-            text = tess.image_to_string(img, lang=request.lang)
+
+            # set language for processing
+            if request.args.get('lang') == 'English':
+                langToProcess = 'eng'
+            elif request.args.get('lang') == 'Telugu':
+                langToProcess = 'tel'
+            else:
+                langToProcess = 'urdu'
+
+            text = tess.image_to_string(img, lang=langToProcess)
             src = '../static/images/' + filename
             return text
             # return render_template('success.html', filename=filename, text=text, img=img, src=src)
