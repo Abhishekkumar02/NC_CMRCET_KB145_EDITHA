@@ -8,6 +8,9 @@
 *	Abishek Khatri
 *	Viabhav kumar
 
+> Team Mentor
+* Shobhit Bhatnagar
+
 ---
 ## How to make it work
 
