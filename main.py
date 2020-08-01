@@ -2,7 +2,8 @@ import os
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import pytesseract as tess
-tess.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
+if os.name == 'nt':
+    tess.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
 from PIL import Image
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
