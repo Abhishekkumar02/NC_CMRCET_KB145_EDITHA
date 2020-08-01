@@ -6,6 +6,8 @@ window.onload = function() {
 
 // upload the file via ajax
 function uploadme(eve) {
+	// comment this line to use ajax
+	return
 	eve.preventDefault();
 	ele = eve.srcElement
 	uploadfile = document.getElementById("img").files[0]
@@ -15,13 +17,16 @@ function uploadme(eve) {
 
 	let xhr = new XMLHttpRequest()
 	xhr.upload.addEventListener("progress", (e) => {
-		console.log(e)
+		// controll progress bar
+		console.log("prog",e)
 	})
 	xhr.upload.addEventListener("load", (e) => {
-		console.log(e)
+		// end progress bar
+		console.log("load",e)
 	})
 	xhr.onload = function(e) {
-		console.log(e)
+		// load data to user
+		// console.log("onload",e)
 		console.log(xhr.responseText)
 	}
 	xhr.open("POST","http://127.0.0.1:5000?lang="+ele.value.split(' ')[1])
