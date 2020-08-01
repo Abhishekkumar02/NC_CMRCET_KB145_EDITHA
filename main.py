@@ -42,21 +42,23 @@ def upload_file():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 app.logger.info('File name  %s', filename)
-                pdf_file = 'static/images/'+ filename
+                pdf_data = 'static/images/'+ filename
                 pdf_text=""
-                pages = convert_from_path(pdf_file, poppler_path= r'poppler/bin')
+                langToProcess = ""
+                pages = convert_from_path(pdf_data, poppler_path= r'poppler/bin')
+                if request.form.get("English"):
+                    langToProcess = 'eng'
+                elif request.form.get("Telugu"):
+                    langToProcess = 'tel'
+                else:
+                    langToProcess = 'urdu'
                 for page in pages:
                     app.logger.info('Text  %s', pdf_text)
-                    # set language for processing
-                    if request.args.get('lang') == 'English':
-                        langToProcess = 'eng'
-                    elif request.args.get('lang') == 'Urdu':
-                        langToProcess = 'urdu'
-                    else:
-                        langToProcess = 'tel'
 
-                    text = tess.image_to_string(pdf_text, lang=langToProcess)
-                return render_template('success.html', filename=filename, text=pdf_text)
+                    text = tess.image_to_string(page, lang =langToProcess)
+                    pdf_text += text
+                    
+                return render_template('success.html', filename = filename, text=pdf_text)
             else:
 
                 filename = secure_filename(file.filename)
@@ -64,12 +66,12 @@ def upload_file():
                 img = Image.open('static/images/' + filename)
 
                 # set language for processing
-                if request.args.get('lang') == 'English':
+                if request.form.get("English"):
                     langToProcess = 'eng'
-                elif request.args.get('lang') == 'Urdu':
-                    langToProcess = 'urdu'
-                else:
+                elif request.form.get("Telugu"):
                     langToProcess = 'tel'
+                else:
+                    langToProcess = 'urdu'
 
                 text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
