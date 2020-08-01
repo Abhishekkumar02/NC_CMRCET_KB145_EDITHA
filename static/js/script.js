@@ -15,7 +15,7 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: false,
+		Log: true,
 		Error: true
 	};
 	console.log("Welcome to EDITHA KB145 PS 😉")
@@ -33,8 +33,30 @@ window.onload = function() {
 	})
 
 	document.getElementById("img").addEventListener ( "change", handleSelectImage )
+
+	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
 	
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
+
+	/*
+		Search from result
+	*/
+	function searchText ( event ) {
+		if ( DEBUG.Log ) {
+			console.log( event )
+		}
+
+		let resultText = document.querySelector(".outputResult").innerText
+
+		// match all regex
+		let exp = new RegExp(event.srcElement.value, "ig")
+		let result = [...resultText.matchAll(exp)]
+
+		if ( DEBUG.Log ) {
+			console.log(result)
+		}
+
+	}
 
 	/*
 		Detect file select changes and update status
@@ -43,9 +65,14 @@ window.onload = function() {
 		
 		let statusElement = document.querySelector(".text.text-upload")
 		let choosenFile = event.srcElement.files[0]
+		let imgElement = document.querySelector("#inputImage")
 		
 		statusElement.innerHTML = "File: "+choosenFile.name
 
+		imgElement.src = URL.createObjectURL(choosenFile)
+		imgElement.onload = function() {
+			URL.revokeObjectURL(this.src)
+		}
 		// show filename
 		this.parentElement.classList.add("drop");
 		this.parentElement.classList.remove("drag");
@@ -108,6 +135,8 @@ window.onload = function() {
 				statusElement.parentElement.classList.remove("drop")
 
 				// do something for displaying the result
+				// temperory response display
+				document.querySelector(".outputResult").innerHTML = responseText
 				
 				if ( DEBUG.Log ) {
 					console.log ( responseText )
