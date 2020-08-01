@@ -2,11 +2,11 @@
 ## KB145_Editha
 ---
 > Team members
-* Abishek kumar (Team Leader)
-* Ritik gupta
-* Harshita
-*	Abishek Khatri
-*	Viabhav kumar
+* Abishek Kumar (Team Leader)
+* Ritik Gupta
+* Harshita Madhok
+*	Abishek Khatr
+*	Vaibhav Kumar
 
 > Team Mentor
 * Shobhit Bhatnagar
