@@ -1,48 +1,87 @@
-body{
+body {
     background-color: rgb(236, 236, 236);
     font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-.col-content{
+.navbar {
+    font-size: 1.25rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.navbar-nav {}
+
+.nav-item {
+    padding-right: 3%;
+}
+
+.col-content {
     text-align: center;
-    
 }
 
-.col-content h1{
+.col-content h1 {
     padding-top: 200px;
     font-size: 80px;
     color: rgb(136, 136, 136);
 }
 
-
-.col-side{
-}
-
-hr{
+hr {
     margin: 0;
 }
 
-.bi-chat-quote{
+.bi-chat-quote {
     color: rgb(24, 224, 141);
 }
-.input-btn{
-  background-color:  rgb(24, 224, 141);
+
+.input-btn {
+    background-color: rgb(24, 224, 141);
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     color: white;
 }
 
-.upload-btn{
-    background-color:  rgb(24, 224, 141);
-    
+.upload-btn {
+    background-color: rgb(24, 224, 141);
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     box-shadow: none;
-    
 }
 
-.page-footer{
+
+/* about section */
+
+.jumbotron {
+    margin-top: 5rem;
+}
+
+
+/*  team section */
+
+.team {
+    margin-bottom: 3rem;
+}
+
+.team-heading {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.page-footer {
+    font-size: 1.25rem;
+    width: 100vw;
     height: 50px;
+    text-align: center;
+    padding: 3% 0 4%;
+    background-color: rgb(9, 192, 116);
+}
+
+.page-footer:hover {
+    color: rgb(255, 255, 255);
 }
 
 #sticky-footer {
@@ -50,17 +89,24 @@ hr{
     bottom: 0;
     width: 100%;
     background-color: rgb(9, 192, 116);
-  }
+}
 
-  a:hover{
-      text-decoration: none;
-  }
+a:hover {
+    text-decoration: none;
+}
 
-  a{
-      color: white;
-  }
+a {
+    color: white;
+}
 
-  /* success page ---------------- */
-  
-  .col-content h2{
-margin-top: 50px;  }
+
+/* success page ---------------- */
+
+.col-content h2 {
+    margin-top: 50px;
+}
+
+
+/* media queries */
+
+@media (max-width: 700px) {}
