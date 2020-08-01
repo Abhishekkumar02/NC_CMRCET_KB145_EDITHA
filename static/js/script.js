@@ -22,6 +22,8 @@ window.onload = function() {
 		element.addEventListener ( "click", fetchResult )
 	})
 
+	document.getElementById("img").addEventListener("change", handleSelectImage)
+	
 	/*
 		get the click event of input button
 		and make a ajax request to the server
