@@ -20,7 +20,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    print("ARGS:",request.args,"---")
+    # print("ARGS:",request.args,"---")
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
