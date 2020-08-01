@@ -32,9 +32,10 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             img = Image.open('static/images/' + filename)
-            text = tess.image_to_string(img, lang='tel')
+            text = tess.image_to_string(img, lang=request.lang)
             src = '../static/images/' + filename
-            return render_template('success.html', filename=filename, text=text, img=img, src=src)
+            return text
+            # return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
 
 
