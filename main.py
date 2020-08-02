@@ -15,7 +15,8 @@ UPLOAD_FOLDER = dir_path + '/static/images'
 UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
 File_EXTENSIONS = set(['pdf'])
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-file_EXTENSIONS = set(['pdf'])
+
+
 app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
