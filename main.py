@@ -75,7 +75,10 @@ def upload_file():
 
                 text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
-                return render_template('success.html', filename=filename, text=text, img=img, src=src)
+                if request.form.get("ajax"):
+                    return text
+                else
+                    return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
 
 

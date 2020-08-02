@@ -96,6 +96,7 @@ window.onload = function() {
 
 		// set the language and file to be parsed
 		formData.append(button.name,"1")
+		formData.append("ajax","1")
 		formData.append("file", fileToUplaod)
 
 		// initaiate the ajax request
