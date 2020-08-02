@@ -3,7 +3,8 @@ from pdf2image import convert_from_path
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import pytesseract as tess
-# for linux users 
+
+# for linux users
 if os.name == 'nt':
     tess.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
 from PIL import Image
@@ -18,13 +19,16 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_PDF'] = UPLOAD_FOLDER_PDF
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 def pdf_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in File_EXTENSIONS
+
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -43,10 +47,12 @@ def upload_file():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER_PDF'], filename))
                 app.logger.info('File name  %s', filename)
-                pdf_data = 'static/pdf/'+ filename
-                pdf_text=""
-                langToProcess = ""
-                pages = convert_from_path(pdf_data, poppler_path= r'poppler/bin')
+                pdf_data = 'static/pdf/' + filename
+                pdf_text = ""
+                if os.name == 'nt':
+                    pages = convert_from_path(pdf_data, poppler_path=r'poppler/bin')
+                else:
+                    pages = convert_from_path(pdf_data)
                 if request.form.get("English"):
                     langToProcess = 'eng'
                 elif request.form.get("Telugu"):
@@ -56,10 +62,10 @@ def upload_file():
                 for page in pages:
                     app.logger.info('Text  %s', pdf_text)
 
-                    text = tess.image_to_string(page, lang =langToProcess)
+                    text = tess.image_to_string(page, lang=langToProcess)
                     pdf_text += text
-                    
-                return render_template('success.html', filename = filename, text=pdf_text)
+
+                return render_template('success.html', filename=filename, text=pdf_text)
             # for images
             else:
 
