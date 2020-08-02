@@ -77,7 +77,7 @@ def upload_file():
                 src = '../static/images/' + filename
                 if request.form.get("ajax"):
                     return text
-                else
+                else:
                     return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
 
