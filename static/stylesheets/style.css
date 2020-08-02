@@ -49,7 +49,6 @@ hr {
     color: white;
 }
 
-
 .upload-btn {
     background-color: rgb(24, 224, 141);
     padding: 10px 20px 10px 20px;
@@ -57,12 +56,13 @@ hr {
     box-shadow: none;
 }
 
-
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+
 /* upload btn animation */
 
 .upload {
@@ -112,7 +112,8 @@ form {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
-    word-break: break-all; /* for large file name */
+    word-break: break-all;
+    /* for large file name */
 }
 
 .upload .text.text-drop {
@@ -310,12 +311,13 @@ form {
     color: rgb(255, 255, 255);
 }
 
-#sticky-footer {
+
+/* #sticky-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(9, 192, 116);
-}
+} */
 
 a:hover {
     text-decoration: none;
