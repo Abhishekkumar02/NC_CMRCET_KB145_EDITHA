@@ -56,7 +56,7 @@ window.onload = function() {
 	document.getElementById("copyToClipboard").addEventListener("click", function copyToClipboard(event) {
 		document.getElementById("originalData").select()
 		document.execCommand("copy")
-		event.srcElement.innerHTML = "Copied To Clipboard &#x2714"
+		event.srcElement.classList.add("green")
 	})
 
 	/*-----------------------------------FUNCTIONS----------------------------------------*/

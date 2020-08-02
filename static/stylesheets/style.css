@@ -467,8 +467,12 @@ section.result>div.leftInput>span {
     cursor: pointer;
     user-select: none;
     background-color: #333;
-    border: 1px solid #00000077;
+    /* border: 1px solid #00000077; */
     color: #fff;
+}
+
+.rightOutput>.copyToClipboard.green {
+    background-color: rgb(24, 224, 141);
 }
 
 .outputResult {
