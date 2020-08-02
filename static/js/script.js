@@ -7,7 +7,7 @@ window.onload = function() {
 // upload the file via ajax
 function uploadme(eve) {
 	// comment this line to use ajax
-	// return
+	return
 	eve.preventDefault();
 	ele = eve.srcElement
 	uploadfile = document.getElementById("img").files[0]
