@@ -69,6 +69,8 @@ window.onload = function() {
 	*/
 	function handleSelectImage( event ) {
 		
+		// remove previous result
+		document.querySelector(".closeResult").click()
 		
 		let statusElement = document.querySelector(".text.text-upload")
 		let choosenFile = event.srcElement.files[0]
@@ -98,6 +100,7 @@ window.onload = function() {
 		// show filename
 		this.parentElement.classList.add("drop");
 		this.parentElement.classList.remove("drag");
+
 		
 	}
 
