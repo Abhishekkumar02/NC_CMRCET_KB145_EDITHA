@@ -47,8 +47,16 @@ window.onload = function() {
 		event.srcElement.parentElement.querySelector("#inputImage").style.background = 'none'
 		event.srcElement.parentElement.querySelector("#searchText").value = ''
 		document.getElementById("noOfSearch").innerHTML = ''
+		document.getElementById("fileName").innerHTML = ''
 		resultText = ''
 		
+	})
+
+	// copy result to clipboard
+	document.getElementById("copyToClipboard").addEventListener("click", function copyToClipboard(event) {
+		document.getElementById("originalData").select()
+		document.execCommand("copy")
+		event.srcElement.innerHTML = "Copied To Clipboard &#x2714"
 	})
 
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
@@ -103,8 +111,10 @@ window.onload = function() {
 		document.querySelector("section.result").classList.remove("hidden")
 
 		// scroll to result
-		scrollUpTo = document.querySelector("nav.navbar").scrollHeight + document.querySelector(".sectionDiv").scrollHeight
-		window.scroll( 0, scrollUpTo + 100 )
+		if ( search == false ) {
+			scrollUpTo = document.querySelector("nav.navbar").scrollHeight + document.querySelector(".sectionDiv").scrollHeight
+			window.scroll( 0, scrollUpTo - 100 )
+		}
 
 	}
 
@@ -118,7 +128,7 @@ window.onload = function() {
 
 		let countElement = document.getElementById("noOfSearch")
 		
-		let searchText = event.srcElement.value
+		let searchText = event.srcElement.value.trim()
 		if ( searchText.length == '' ) {
 			makeResult ( resultText, true )
 			countElement.innerHTML = ''
@@ -133,7 +143,7 @@ window.onload = function() {
 		let outputText = resultText.split(exp)
 
 		// set count
-		countElement.innerHTML = result.length
+		countElement.innerHTML = "Search Count: " + result.length
 
 		// insert mark of searched element
 		let i = 0;
@@ -161,13 +171,15 @@ window.onload = function() {
 		let statusElement = document.querySelector(".text.text-upload")
 		let choosenFile = event.srcElement.files[0]
 		let imgElement = document.querySelector("#inputImage")
-
+		let fileNameHolder = document.getElementById("fileName");
+		
 		if ( DEBUG.Log ) {
 			console.log(choosenFile)
 		}
 		
 		// text to display
 		statusElement.innerHTML = "File: " + choosenFile.name
+		fileNameHolder.innerHTML = "File: " + choosenFile.name
 		
 		// if selected file is an image
 		// then show the image preview in result
@@ -256,6 +268,7 @@ window.onload = function() {
 				statusElement.parentElement.classList.remove("drop")
 				fileElement.value = ''
 
+				document.getElementById("originalData").value = responseText
 				makeResult(responseText)
 				
 				if ( DEBUG.Log ) {
