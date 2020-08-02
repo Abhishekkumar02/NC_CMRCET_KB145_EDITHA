@@ -56,7 +56,7 @@ def upload_file():
                     langToProcess = 'eng'
                 elif request.form.get("Telugu"):
                     langToProcess = 'tel'
-                elif request.from.get("Urdu"):
+                elif request.form.get("Urdu"):
                     langToProcess = 'urd'
                 else:
                     langToProcess = 'tel+eng+urd'
@@ -81,7 +81,7 @@ def upload_file():
                     langToProcess = 'eng'
                 elif request.form.get("Telugu"):
                     langToProcess = 'tel'
-                elif request.from.get("Urdu"):
+                elif request.form.get("Urdu"):
                     langToProcess = 'urd'
                 else:
                     langToProcess = 'tel+eng+urd'
