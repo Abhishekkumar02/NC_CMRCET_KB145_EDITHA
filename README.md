@@ -1,5 +1,6 @@
 # SIH 2020
 ## KB145_Editha
+### An OCR Software for English, Telugu and Urdu Languages
 ---
 > Team members
 * Abhishek Kumar (Team Leader)
@@ -15,7 +16,7 @@
 ---
 ## How to make it work
 
-open terminal in linux or command prompt in windows
+open terminal in linux(Debian Based) or command prompt in windows
 
 * clone the repositry
 	> git clone https://github.com/Abhishekkumar02/kb145_Editha
@@ -30,4 +31,4 @@ open terminal in linux or command prompt in windows
 
 * open url http://127.0.0.1:5000 on your web browser
 
-* upload image and select upload button
+* upload image or pdf and select the desired button!
