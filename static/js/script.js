@@ -15,7 +15,7 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: false,
+		Log: true,
 		Error: true
 	};
 	let resultText = ''
@@ -24,18 +24,20 @@ window.onload = function() {
 	/*-------------------------------EVENT LISTENETRS-------------------------------------*/
 	
 	/*
-		get all submit button
-		like upload english and upload telugu
+		get submit button
 	 	and add event listener of click for uploading
 		the user selected file via ajax
 	*/
-	document.querySelectorAll ( "input[type=submit]" ).forEach( function (element) {
-		element.addEventListener ( "click", fetchResult )
-	})
+	document.querySelector ( ".dropdown-submit" ).addEventListener ( "click", fetchResult )
 
+	// event on file select
 	document.getElementById("img").addEventListener ( "change", handleSelectImage )
 
+	// event on search from result
 	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
+
+	// event on selecting drop down
+	document.querySelector("div.dropdown-menu").addEventListener( "click", handleLangSelect )
 
 	// reset result when clicked on close button
 	document.querySelector(".closeResult").addEventListener ( "click", function handleResultClose ( event ) {
@@ -50,6 +52,39 @@ window.onload = function() {
 	})
 
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
+	
+	/*
+		handle the click event on language selection
+		dropdown
+	*/
+	function handleLangSelect ( event ) {
+		
+		// prevent going to #
+		event.preventDefault()
+
+		let selectElement = event.srcElement
+		// to be shown as placeholder
+		let buttonElement = selectElement.parentElement.previousElementSibling
+		// element in with data to be saved of selected language
+		let dataElement = buttonElement.parentElement
+
+		// save the selected info
+		let selectedInfo = {
+			value: selectElement.getAttribute("data-val"),
+			text: selectElement.innerHTML
+		}
+
+		// toogle data b/w selected element and 
+		// placeholder element
+		selectElement.innerHTML = buttonElement.innerHTML
+		selectElement.setAttribute("data-val", dataElement.getAttribute("data-val"))
+		dataElement.setAttribute("data-val", selectedInfo.value)
+		buttonElement.innerHTML = selectedInfo.text
+		
+		if ( DEBUG.Log ) {
+			console.log(event)
+		}
+	}
 	
 	/*
 		make result text for displaying
@@ -164,7 +199,7 @@ window.onload = function() {
 		// stop default operation
 		event.preventDefault();
 
-		let button = event.srcElement
+		let selectedLanguage = event.srcElement.previousElementSibling.getAttribute("data-val")
 		let statusElement = document.querySelector(".text.text-upload")
 		let fileElement = document.getElementById("img")
 
@@ -180,7 +215,7 @@ window.onload = function() {
 		let formData = new FormData()
 
 		// set the language and file to be parsed
-		formData.append(button.name,"1")
+		formData.append(selectedLanguage,"1")
 		formData.append("ajax","1")
 		formData.append("file", fileToUplaod)
 
