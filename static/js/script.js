@@ -37,6 +37,7 @@ window.onload = function() {
 
 	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
 
+	// reset result when clicked on close button
 	document.querySelector(".closeResult").addEventListener ( "click", function handleResultClose ( event ) {
 		
 		event.srcElement.parentElement.classList.add ( "hidden" )
@@ -92,13 +93,14 @@ window.onload = function() {
 		// match all regex
 		let exp = new RegExp(searchText, "ig")
 		let result = [...resultText.matchAll(exp)]
+
+
 		let outputText = resultText.split(exp)
 
 		// set count
 		countElement.innerHTML = result.length
-		// let result = resultText.replace(exp,'<span class="mark">'+searchText+'</span>')
 
-		// makeResult ( result, true )
+		// insert mark of searched element
 		let i = 0;
 		result.forEach( function handleSearch( result ) {
 			outputText[i] = outputText[i] + '<span class="mark">' + result[0] + '</span>'
