@@ -20,6 +20,18 @@ body {
 
 .navbar-nav {}
 
+
+/* Backgroung Img Main Section */
+
+.sectionDiv {
+    background-image: url(/static/images/mac.jpg);
+    background-color: rgba(0, 0, 0, 0.5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+}
+
 .nav-item {
     padding-right: 3%;
 }
