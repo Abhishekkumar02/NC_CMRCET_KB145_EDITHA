@@ -15,9 +15,10 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: true,
+		Log: false,
 		Error: true
 	};
+	let resultText = ''
 	console.log("Welcome to EDITHA KB145 PS 😉")
 	
 	/*-------------------------------EVENT LISTENETRS-------------------------------------*/
@@ -37,12 +38,38 @@ window.onload = function() {
 	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
 
 	document.querySelector(".closeResult").addEventListener ( "click", function handleResultClose ( event ) {
+		
 		event.srcElement.parentElement.classList.add ( "hidden" )
 		event.srcElement.parentElement.querySelector(".outputResult").innerHTML = ""
 		event.srcElement.parentElement.querySelector("#inputImage").style.background = 'none'
+		event.srcElement.parentElement.querySelector("#searchText").value = ''
+		resultText = ''
+		
 	})
 
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
+	
+	/*
+		make result text for displaying
+	*/
+	function makeResult ( responseText, search = false ) {
+
+		if ( search == false ) {
+			resultText = responseText
+		}
+
+		let outputHtml = ''
+		
+		outputHtml = responseText.replace(/\n/g,'</br>')
+		
+		document.querySelector(".outputResult").innerHTML = outputHtml
+		document.querySelector("section.result").classList.remove("hidden")
+
+		// scroll to result
+		scrollUpTo = document.querySelector("nav.navbar").scrollHeight + document.querySelector(".sectionDiv").scrollHeight
+		window.scroll( 0, scrollUpTo + 100 )
+
+	}
 
 	/*
 		Search from result
@@ -52,14 +79,35 @@ window.onload = function() {
 			console.log( event )
 		}
 
-		let resultText = document.querySelector(".outputResult").innerText
-
+		let countElement = document.getElementById("noOfSearch")
+		
+		let searchText = event.srcElement.value
+		if ( searchText.length == '' ) {
+			makeResult ( resultText, true )
+			countElement.innerHTML = ''
+			return
+		}
+		
 		// match all regex
-		let exp = new RegExp(event.srcElement.value, "ig")
+		let exp = new RegExp(searchText, "ig")
 		let result = [...resultText.matchAll(exp)]
+		let outputText = resultText.split(exp)
 
+		// set count
+		countElement.innerHTML = result.length
+		// let result = resultText.replace(exp,'<span class="mark">'+searchText+'</span>')
+
+		// makeResult ( result, true )
+		let i = 0;
+		result.forEach( function handleSearch( result ) {
+			outputText[i] = outputText[i] + '<span class="mark">' + result[0] + '</span>'
+			i++
+		})
+		
+		makeResult ( outputText.join(''), true )
+		
 		if ( DEBUG.Log ) {
-			console.log(result)
+			console.log(searchText, result)
 		}
 
 	}
@@ -170,14 +218,7 @@ window.onload = function() {
 				statusElement.parentElement.classList.remove("drop")
 				fileElement.value = ''
 
-				// do something for displaying the result
-				// temperory response display
-				document.querySelector(".outputResult").innerHTML = responseText
-				document.querySelector("section.result").classList.remove("hidden")
-
-				// scroll to result
-				scrollUpTo = document.querySelector("nav.navbar").scrollHeight + document.querySelector(".sectionDiv").scrollHeight
-				window.scroll( 0, scrollUpTo + 100 )
+				makeResult(responseText)
 				
 				if ( DEBUG.Log ) {
 					console.log ( responseText )

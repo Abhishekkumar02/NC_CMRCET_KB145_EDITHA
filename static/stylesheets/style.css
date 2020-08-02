@@ -301,7 +301,7 @@ section.result {
     /* left:0; */
     margin: 10% 0 0 0;
     display: flex;
-    padding-top: 90px;
+    padding: 90px 0 20px 0;
 }
 
 section.result.hidden {
@@ -324,7 +324,7 @@ section.result>div.resultText {
     position: relative;
 }
 
-.leftInput:after {
+/* .leftInput:after {
     content: "";
     position: absolute;
     border:1px solid #32a852;
@@ -332,7 +332,7 @@ section.result>div.resultText {
     right:0;
     top: 50%;
     transform: translateY(-50%);
-}
+} */
 
 .leftInput.remove {
     flex: 0 !important;
@@ -351,22 +351,43 @@ section.result>div.resultText {
 .rightOutput {
     flex:1;
     height: 100%;
+    border-left:1px solid #32a852;
 }
 
-.rightOutput>input.searchText {
+.rightOutput>.searchField {
+    position: relative;
+    width: 95%;
+    padding: 10px;
+}
+
+.rightOutput>.searchField>input.searchText {
+    position: relative;
     background: none;
     border: none;
     outline: none;
     border: 1px solid #32a852;
-    width: 50%;
-    margin: 10px;
+    border-bottom: 2px solid #32a852;
+    width: 100%;
+    /* margin: 10px; */
     padding: 7px 10px;
+}
+
+.rightOutput>.searchField>span#noOfSearch {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
 }
 
 .rightOutput>.outputResult {
     max-width: 95%;
     max-height: 80vh;
     overflow: auto;
+}
+
+.outputResult>span.mark {
+    background-color: #ffff00aa;
+    padding: 0;
 }
 
 section.result>div {
