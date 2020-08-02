@@ -15,6 +15,11 @@ elif ! tesseract --version &> /dev/null; then
 	sudo apt install tesseract-ocr tesseract-ocr-tel tesseract-ocr-eng tesseract-ocr-urd -y
 	sudo apt-get install -y poppler-utils
 	check=1
+else
+	lang=$(tesseract --list-langs | egrep -i '^(urd|tel|eng)')
+	if ! [[ $lang[0] =~ "eng" && $lang[1] =~ "tel" && $lang[2] =~ "urd" ]]; then
+		sudo apt install tesseract-ocr tesseract-ocr-tel tesseract-ocr-eng tesseract-ocr-urd -y
+	fi
 fi
 
 # check if all requirements satisfied

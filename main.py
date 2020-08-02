@@ -85,7 +85,9 @@ def upload_file():
                 elif request.form.get("Telugu"):
                     langToProcess = 'tel'
                 else:
-                    langToProcess = 'urdu'
+                    langToProcess = 'urd'
+
+                langToProcess = 'tel+eng+urd'
 
                 text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
