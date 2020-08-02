@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="../static/stylesheets/style.css" rel="stylesheet" />
     <script src="../static/js/script.js"></script>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> front-end
     <title>Editha OCR</title>
 </head>
 
@@ -38,13 +42,13 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="team.html">Team</a>
+                        <a class="nav-link" href="#team">Team</a>
                     </li>
             </div>
         </nav>
         <hr>
 
-        <div class="row">
+        <div class="row sectionDiv">
 
             <div class="col-2 col-side">
             </div>
@@ -57,22 +61,65 @@
                 <p> accepted formats : pdf, jpg, png, jpeg </p>
 
                 <form method="post" enctype=multipart/form-data>
-                    <div class="form-group">
-                        <input type="file" name=file id="img" style="display:none;" />
-                        <label class="input-btn" for="img"><svg class="bi bi-cloud-upload" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.887 6.2l-.964-.165A2.5 2.5 0 103.5 11H6v1H3.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0113.5 12H10v-1h3.5a1.5 1.5 0 00.237-2.981L12.7 7.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/>
-                            <path fill-rule="evenodd" d="M5 8.854a.5.5 0 00.707 0L8 6.56l2.293 2.293A.5.5 0 1011 8.146L8.354 5.5a.5.5 0 00-.708 0L5 8.146a.5.5 0 000 .708z" clip-rule="evenodd"/>
-                            <path fill-rule="evenodd" d="M8 6a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 018 6z" clip-rule="evenodd"/>
-                          </svg> Click me to upload image</label>
+                    <div class="flex-container">
+                        <div class="form-group upload">
+                            <input type="file" name="file" id="img" title="" class="drop-here" width="250" height="250" accept=".pdf,image/jpeg,image/png">
+                            <div class="text text-drop">Select or DROP a File</div>
+                            <div class="text text-upload">uploading...</div>
+                            <svg class="check-wrapper" width="130" height="130">
+                                <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                            </svg>
+                        </div>
                     </div>
-                    <input type="submit" name="Telugu" value="Upload Telugu" class="btn btn-primary">
-                    <input type="submit" name="English" value="Upload English" class="btn btn-primary">
+
+                    <div class="uploadButtons">
+                        <input type="submit" name="Telugu" value="Upload Telugu " class="btn btn-primary btn-lg upload-btn">
+                        <input type="submit" name="English" value="Upload English" class="btn btn-primary btn-lg upload-btn">
+                    </div>
+
+
+                    <!-- result section -->
+                    <!-- <div class="container result">
+                        <div class="row">
+                            <div class="col-md-6 your-input">Your Input</div>
+                            <div class="col-md-6 your-output">Your Output</div>
+                        </div>
+                    </div> -->
+
+
+
+                    <!-- temporary result -->
+                    <!-- <div id="result">
+                        Temporary result
+                        <div class="inputImage">
+                            <img src="" id="inputImage" width="500" height="500" />
+                        </div>
+                        <input id="searchText" />
+                        <div style="overflow: auto; height: 200px;" class="outputResult"></div>
+                    </div> -->
+
                 </form>
 
-
-
+                
             </div>
         </div>
+        
+        <!-- result in pop up windows -->
+        <section class="result hidden">
+            <span class="closeResult">❌</span>
+            <div class="resultText">Results</div>
+            <div class="leftInput">
+                <span>Input Data</span>
+                <div id="inputImage" class="imagePreview"></div>
+            </div>
+            <div class="rightOutput">
+                <span>Output Result</span>
+                <input type="text" id="searchText" class="searchText" placeholder="input search text" />
+                <pre class="outputResult"></pre>
+            </div>
+        </section>
+
+
 
         <!-- about section -->
         <div class="jumbotron jumbotron-fluid" id="about">
@@ -85,10 +132,70 @@
                     image side by side to facilitate reviewing mis-recognized words.
                     <br>
                 </p>
-                <a href="team.html" class="btn btn-dark btn-lg mt-2">View Our Team</a>
+                <a href="#team" class="btn btn-dark btn-lg mt-2">View Our Team</a>
 
             </div>
         </div>
+    </div>
+
+    <!-- team section -->
+
+    <!-- team -->
+    <div class="container team" id="team">
+        <h3 class="team-heading">THE TEAM</h3>
+        <div class="row">
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Vaibhav Kumar</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Back End Developer</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Abhishek Kumar</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Back End Developer</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Ritik Gupta</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Back End Developer</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+            <div class="w-100"></div>
+
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Harshita Madhok</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Presenter</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Ashish</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">UI/UX Developer</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+            <div class="card col-sm">
+                <img src="../static/images/avatar.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Abhishek Khatri</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">UI/UX Developer</h6>
+                    <p class="card-text">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- footer section -->
@@ -96,7 +203,7 @@
         <p>Project Github</p>
     </div>
 
-
+    <script src="../static/js/upload-btn.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

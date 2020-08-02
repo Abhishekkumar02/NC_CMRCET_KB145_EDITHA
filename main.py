@@ -2,6 +2,8 @@ import os
 from pdf2image import convert_from_path
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
+import logging
+from logging.handlers import RotatingFileHandler
 import pytesseract as tess
 
 # for linux users
@@ -14,8 +16,9 @@ UPLOAD_FOLDER = dir_path + '/static/images'
 UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
 File_EXTENSIONS = set(['pdf'])
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
+file_EXTENSIONS = set(['pdf'])
 app = Flask(__name__)
+logging.basicConfig(level=logging.DEBUG)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_PDF'] = UPLOAD_FOLDER_PDF
 
@@ -83,7 +86,10 @@ def upload_file():
 
                 text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
-                return render_template('success.html', filename=filename, text=text, img=img, src=src)
+                if request.form.get("ajax"):
+                    return text
+                else:
+                    return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
 
 
