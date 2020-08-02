@@ -12,7 +12,7 @@ elif ! pip3 --version &> /dev/null; then
 elif ! tesseract --version &> /dev/null; then
 	check=0
 	echo -e "installing tesseract and poppler"
-	sudo apt install tesseract-ocr tesseract-ocr-tel tesseract-ocr-eng -y
+	sudo apt install tesseract-ocr tesseract-ocr-tel tesseract-ocr-eng tesseract-ocr-urd -y
 	sudo apt-get install -y poppler-utils
 	check=1
 fi
