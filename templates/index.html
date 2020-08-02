@@ -9,7 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="../static/stylesheets/style.css" rel="stylesheet">
+    <link href="../static/stylesheets/style.css" rel="stylesheet" />
+    <script src="../static/js/script.js"></script>
 
     <title>Editha OCR</title>
 </head>
@@ -51,24 +52,47 @@
             <div class="col-content col-8">
 
                 <h1>
-                    Upload Your File
+                    Upload Your File And image
                 </h1>
-                <p> accepted formats : jpg, png, jpeg </p>
+                <p> accepted formats : pdf, jpg, png, jpeg </p>
 
                 <form method="post" enctype=multipart/form-data>
                     <div class="flex-container">
-
                         <div class="form-group upload">
-                            <input type="file" title="" class="drop-here" width="250" height="250">
-                            <div class="text text-drop">drop here</div>
+                            <input type="file" name="file" id="img" title="" class="drop-here" width="250" height="250">
+                            <div class="text text-drop">Select or DROP a File</div>
                             <div class="text text-upload">uploading...</div>
                             <svg class="check-wrapper" width="130" height="130">
-                        <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
-                      </svg>
+                                <polyline class="check" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                            </svg>
                         </div>
                     </div>
-                    <input type="submit" value="Upload Telugu" class="btn btn-primary btn-lg upload-btn">
-                    <input type="submit" value="Upload English" class="btn btn-primary btn-lg upload-btn">
+
+                    <div class="uploadButtons">
+                        <input type="submit" name="Telugu" value="Upload Telugu " class="btn btn-primary btn-lg upload-btn">
+                        <input type="submit" name="English" value="Upload English" class="btn btn-primary btn-lg upload-btn">
+                    </div>
+
+
+                    <!-- result section -->
+                    <!-- <div class="container result">
+                        <div class="row">
+                            <div class="col-md-6 your-input">Your Input</div>
+                            <div class="col-md-6 your-output">Your Output</div>
+                        </div>
+                    </div> -->
+
+
+                    <!-- temporary result -->
+                    <div id="result">
+                        Temporary result
+                        <div class="inputImage">
+                            <img src="" id="inputImage" width="500" height="500" />
+                        </div>
+                        <input id="searchText" />
+                        <div style="overflow: auto; height: 200px;" class="outputResult"></div>
+                    </div>
+
                 </form>
 
             </div>

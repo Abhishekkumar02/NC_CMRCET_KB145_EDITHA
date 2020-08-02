@@ -42,11 +42,26 @@ hr {
     color: rgb(24, 224, 141);
 }
 
+.input-btn {
+    background-color: rgb(24, 224, 141);
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.upload-btn {
+    /* background-color: rgb(24, 224, 141); */
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
 
 /* upload btn animation */
 
 .flex-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -64,7 +79,6 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-left: 15rem; */
 }
 
 .upload::before {
@@ -99,6 +113,8 @@ hr {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
+    word-break: break-all;
+    /* for large file name */
 }
 
 .upload .text.text-drop {
@@ -306,12 +322,13 @@ hr {
     color: rgb(255, 255, 255);
 }
 
-#sticky-footer {
+
+/* #sticky-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(9, 192, 116);
-}
+} */
 
 a:hover {
     text-decoration: none;

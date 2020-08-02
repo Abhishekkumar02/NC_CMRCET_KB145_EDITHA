@@ -10,10 +10,12 @@ fileUpload.addEventListener("dragleave", function() {
 });
 
 fileUpload.addEventListener("drop", start, false);
-fileUpload.addEventListener("change", start, false);
+
+// this event is transfered to script.js
+//fileUpload.addEventListener("change", start, false);
 
 function start() {
     this.classList.remove("drag");
     this.classList.add("drop");
-    setTimeout(() => this.classList.add("done"), 3000);
+    // setTimeout(() => this.classList.add("done"), 3000);
 }
