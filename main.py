@@ -86,7 +86,7 @@ def upload_file():
                 else:
                     langToProcess = 'tel+eng+urd'
 
-                text = tess.image_to_string(img, lang='tel+eng+urd')
+                text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
                 if request.form.get("ajax"):
                     return text

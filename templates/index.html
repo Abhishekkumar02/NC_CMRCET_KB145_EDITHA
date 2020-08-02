@@ -69,15 +69,14 @@
 
                     <div class="uploadButtons">
                         <!--  -->
-                        <div class="btn-group dropdown-container">
+                        <div data-current="All" class="btn-group dropdown-container">
                             <button type="button" class="btn  btn-lg dropdown-toggle upload-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid black">
-                                Select
+                                All Languages
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">All Languages</a>
-                                <a class="dropdown-item" href="#">Telugu Only</a>
-                                <a class="dropdown-item" href="#">English Only</a>
-                                <a class="dropdown-item" href="#">Urdu Only</a>
+                                <a data-val="Telugu" class="dropdown-item" href="#">Telugu Only</a>
+                                <a data-val="English" class="dropdown-item" href="#">English Only</a>
+                                <a data-val="Urdu" class="dropdown-item" href="#">Urdu Only</a>
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg dropdown-submit">Submit</button>
