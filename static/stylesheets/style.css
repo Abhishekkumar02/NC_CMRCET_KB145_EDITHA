@@ -1,6 +1,7 @@
 * {
     /* border: 1px solid #333; */
 }
+
 body {
     background-color: rgb(236, 236, 236);
     font-family: 'Raleway', sans-serif;
@@ -284,6 +285,18 @@ hr {
 }
 
 
+/* Dropdown List */
+
+.dropdown-toggle {
+    /* border: 1px solid black!important; */
+    margin-right: 1rem;
+}
+
+.dropdown-submit {
+    width: 15%!important;
+}
+
+
 /* result section */
 
 .sectionDiv {
@@ -318,11 +331,12 @@ section.result>div.resultText {
 }
 
 .leftInput {
-    flex:0.8;
+    flex: 0.8;
     height: 100%;
     overflow: hidden;
     position: relative;
 }
+
 
 /* .leftInput:after {
     content: "";
@@ -349,9 +363,9 @@ section.result>div.resultText {
 }
 
 .rightOutput {
-    flex:1;
+    flex: 1;
     height: 100%;
-    border-left:1px solid #32a852;
+    border-left: 1px solid #32a852;
 }
 
 .rightOutput>.searchField {
@@ -395,6 +409,7 @@ section.result>div {
     flex-direction: column;
     align-items: center;
 }
+
 section.result>div>span {
     padding: 7px;
     margin: 10px 0 0 0;
@@ -409,6 +424,7 @@ section.result>div>span {
     cursor: pointer;
     z-index: 2;
 }
+
 
 /* about section */
 

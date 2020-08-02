@@ -68,15 +68,30 @@
                     </div>
 
                     <div class="uploadButtons">
-                        <input type="submit" name="Telugu" value="Telugu Only" class="btn btn-primary btn-lg upload-btn">
+                        <!--  -->
+                        <div class="btn-group dropdown-container">
+                            <button type="button" class="btn  btn-lg dropdown-toggle upload-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid black">
+                                Select
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">All Languages</a>
+                                <a class="dropdown-item" href="#">Telugu Only</a>
+                                <a class="dropdown-item" href="#">English Only</a>
+                                <a class="dropdown-item" href="#">Urdu Only</a>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg dropdown-submit">Submit</button>
+
+                        <!--  -->
+                        <!-- <input type="submit" name="Telugu" value="Telugu Only" class="btn btn-primary btn-lg upload-btn">
                         <input type="submit" name="English" value="English Only" class="btn btn-primary btn-lg upload-btn">
                         <input type="submit" name="Urdu" value="Urdu Only" class="btn btn-primary btn-lg upload-btn">
-                        <br><br><input type="submit" name="Mixture" value="Mixture" class="btn btn-primary btn-lg upload-btn">
+                        <br><br><input type="submit" name="Mixture" value="Mixture" class="btn btn-primary btn-lg upload-btn"> -->
                     </div>
                 </form>
             </div>
         </div>
-        
+
         <!-- result in pop up windows -->
         <section class="result hidden">
             <span class="closeResult">❌</span>
@@ -104,8 +119,8 @@
                 <p class="lead">
                     Editha OCR is a free online Optical Character Recognition (OCR) web application that extracts text from images or scanned documents (PDF). The user can search something from the extracted text or copy it for further processing.
                     <br> <br> Text images could be a screenshot of a digital camera or photocopy of a scanned document such as books, faxes, receipts, bank statements, contracts, bills, business cards, mails, passport, and IDs.
-                    <br> <br> Editha OCR recognizes multi-column documents written in 3 languages (English, Urdu, Telugu), supports several major input image formats (jpg, png) and PDF, which can be loaded from disk, displays recognized text as well as input source
-                    image side by side to facilitate reviewing mis-recognized words.
+                    <br> <br> Editha OCR recognizes multi-column documents written in 3 languages (English, Urdu, Telugu), supports several major input image formats (jpg, png) and PDF, which can be loaded from disk, displays recognized text as well as
+                    input source image side by side to facilitate reviewing mis-recognized words.
                     <br>
                 </p>
                 <a href="#team" class="btn btn-dark btn-lg mt-2">View Our Team</a>
@@ -185,4 +200,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+
 </html>
