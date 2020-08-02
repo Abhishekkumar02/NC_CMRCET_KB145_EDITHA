@@ -44,7 +44,7 @@
         </nav>
         <hr>
 
-        <div class="row">
+        <div class="row sectionDiv">
 
             <div class="col-2 col-side">
             </div>
@@ -82,10 +82,6 @@
                         </div>
                     </div> -->
 
-                    <!-- result in pop up windows -->
-                    <section class="result">
-                        
-                    </section>
 
 
                     <!-- temporary result -->
@@ -100,17 +96,26 @@
 
                 </form>
 
+                
             </div>
         </div>
-
-
-        <!-- result section -->
-        <!-- <div class="container result">
-            <div class="row">
-                <div class="col-md-6 your-input">Your Input</div>
-                <div class="col-md-6 your-output">Your Output</div>
+        
+        <!-- result in pop up windows -->
+        <section class="result hidden">
+            <span class="closeResult">❌</span>
+            <div class="resultText">Results</div>
+            <div class="leftInput">
+                <span>Input Data</span>
+                <div id="inputImage" class="imagePreview"></div>
             </div>
-        </div> -->
+            <div class="rightOutput">
+                <span>Output Result</span>
+                <input type="text" id="searchText" class="searchText" placeholder="input search text" />
+                <pre class="outputResult"></pre>
+            </div>
+        </section>
+
+
 
         <!-- about section -->
         <div class="jumbotron jumbotron-fluid" id="about">

@@ -1,11 +1,11 @@
 * {
-    border: 1px solid #333;
+    /* border: 1px solid #333; */
 }
 body {
     background-color: rgb(236, 236, 236);
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .navbar {
@@ -286,12 +286,108 @@ hr {
 
 /* result section */
 
-section.result {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
+.sectionDiv {
+    position: relative;
+    margin: 0 !important;
 }
 
+section.result {
+    z-index: 10;
+    width: 100%;
+    /* height: 100vh; */
+    position: relative;
+    background: #fff;
+    /* top:0; */
+    /* left:0; */
+    margin: 10% 0 0 0;
+    display: flex;
+    padding-top: 90px;
+}
+
+section.result.hidden {
+    display: none;
+}
+
+section.result>div.resultText {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 2em;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.leftInput {
+    flex:0.8;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.leftInput:after {
+    content: "";
+    position: absolute;
+    border:1px solid #32a852;
+    height: 80%;
+    right:0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.leftInput.remove {
+    flex: 0 !important;
+}
+
+.leftInput>.imagePreview {
+    width: 95%;
+    /* border: 1px solid #333; */
+    height: 500px;
+    background-position: center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    margin: 10px 0;
+}
+
+.rightOutput {
+    flex:1;
+    height: 100%;
+}
+
+.rightOutput>input.searchText {
+    background: none;
+    border: none;
+    outline: none;
+    border: 1px solid #32a852;
+    width: 50%;
+    margin: 10px;
+    padding: 7px 10px;
+}
+
+.rightOutput>.outputResult {
+    max-width: 95%;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+section.result>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section.result>div>span {
+    padding: 7px;
+    margin: 10px 0 0 0;
+}
+
+.closeResult {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.5em;
+    user-select: none;
+    cursor: pointer;
+    z-index: 2;
+}
 
 /* about section */
 
@@ -313,7 +409,7 @@ section.result {
 
 .page-footer {
     font-size: 1.25rem;
-    width: 100vw;
+    /* width: 100vw; */
     height: 50px;
     text-align: center;
     padding: 3% 0 4%;

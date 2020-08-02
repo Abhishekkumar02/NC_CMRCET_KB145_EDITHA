@@ -35,7 +35,13 @@ window.onload = function() {
 	document.getElementById("img").addEventListener ( "change", handleSelectImage )
 
 	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
-	
+
+	document.querySelector(".closeResult").addEventListener ( "click", function handleResultClose ( event ) {
+		event.srcElement.parentElement.classList.add ( "hidden" )
+		event.srcElement.parentElement.querySelector(".outputResult").innerHTML = ""
+		event.srcElement.parentElement.querySelector("#inputImage").style.background = 'none'
+	})
+
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
 
 	/*
@@ -63,16 +69,32 @@ window.onload = function() {
 	*/
 	function handleSelectImage( event ) {
 		
+		
 		let statusElement = document.querySelector(".text.text-upload")
 		let choosenFile = event.srcElement.files[0]
 		let imgElement = document.querySelector("#inputImage")
-		
-		statusElement.innerHTML = "File: "+choosenFile.name
 
-		imgElement.src = URL.createObjectURL(choosenFile)
-		imgElement.onload = function() {
-			URL.revokeObjectURL(this.src)
+		if ( DEBUG.Log ) {
+			console.log(choosenFile)
 		}
+		
+		// text to display
+		statusElement.innerHTML = "File: " + choosenFile.name
+		
+		// if selected file is an image
+		// then show the image preview in result
+		if ( choosenFile.type.indexOf("image") != -1 ) {
+		
+			imgElement.style.background = "url(" + URL.createObjectURL(choosenFile) + ")"
+			imgElement.parentElement.classList.remove ( "remove" )
+			imgElement.onload = function() {
+				URL.revokeObjectURL(this.src)
+			}
+			
+		} else {
+			imgElement.parentElement.classList.add("remove")
+		}
+
 		// show filename
 		this.parentElement.classList.add("drop");
 		this.parentElement.classList.remove("drag");
@@ -147,7 +169,12 @@ window.onload = function() {
 
 				// do something for displaying the result
 				// temperory response display
-				document.querySelector(".outputResult").innerHTML = "<pre>"+responseText+"</pre>"
+				document.querySelector(".outputResult").innerHTML = responseText
+				document.querySelector("section.result").classList.remove("hidden")
+
+				// scroll to result
+				scrollUpTo = document.querySelector("nav.navbar").scrollHeight + document.querySelector(".sectionDiv").scrollHeight
+				window.scroll( 0, scrollUpTo + 100 )
 				
 				if ( DEBUG.Log ) {
 					console.log ( responseText )
