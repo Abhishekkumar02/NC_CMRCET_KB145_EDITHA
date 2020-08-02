@@ -15,7 +15,8 @@ UPLOAD_FOLDER = dir_path + '/static/images'
 UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
 File_EXTENSIONS = set(['pdf'])
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-file_EXTENSIONS = set(['pdf'])
+
+
 app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -86,7 +87,7 @@ def upload_file():
                 else:
                     langToProcess = 'tel+eng+urd'
 
-                text = tess.image_to_string(img, lang='tel+eng+urd')
+                text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
                 if request.form.get("ajax"):
                     return text
