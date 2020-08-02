@@ -15,7 +15,7 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: true,
+		Log: false,
 		Error: true
 	};
 	let resultText = ''
