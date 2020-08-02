@@ -43,6 +43,7 @@ window.onload = function() {
 		event.srcElement.parentElement.querySelector(".outputResult").innerHTML = ""
 		event.srcElement.parentElement.querySelector("#inputImage").style.background = 'none'
 		event.srcElement.parentElement.querySelector("#searchText").value = ''
+		document.getElementById("noOfSearch").innerHTML = ''
 		resultText = ''
 		
 	})
