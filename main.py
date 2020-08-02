@@ -1,7 +1,9 @@
 import os
+from pdf2image import convert_from_path
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import pytesseract as tess
+# for linux users 
 if os.name == 'nt':
     tess.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
 from PIL import Image
@@ -9,6 +11,7 @@ from PIL import Image
 dir_path = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = dir_path + '/static/images'
 UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
+File_EXTENSIONS = set(['pdf'])
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
@@ -18,6 +21,10 @@ app.config['UPLOAD_FOLDER_PDF'] = UPLOAD_FOLDER_PDF
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def pdf_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in File_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
@@ -30,6 +37,7 @@ def upload_file():
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
+        # for pdf files
         if file and allowed_file(file.filename):
             if pdf_file(file.filename):
                 filename = secure_filename(file.filename)
@@ -52,6 +60,7 @@ def upload_file():
                     pdf_text += text
                     
                 return render_template('success.html', filename = filename, text=pdf_text)
+            # for images
             else:
 
                 filename = secure_filename(file.filename)
