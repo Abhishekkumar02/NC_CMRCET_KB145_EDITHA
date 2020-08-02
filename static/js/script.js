@@ -12,173 +12,174 @@
 // after loading document
 window.onload = function() {
 
-	/*-----------------------------------VARIABLES----------------------------------------*/
-	
-	const DEBUG = {
-		Log: true,
-		Error: true
-	};
-	console.log("Welcome to EDITHA KB145 PS 😉")
-	
-	/*-------------------------------EVENT LISTENETRS-------------------------------------*/
-	
-	/*
-		get all submit button
-		like upload english and upload telugu
-	 	and add event listener of click for uploading
-		the user selected file via ajax
-	*/
-	document.querySelectorAll ( "input[type=submit]" ).forEach( function (element) {
-		element.addEventListener ( "click", fetchResult )
-	})
+    /*-----------------------------------VARIABLES----------------------------------------*/
 
-	document.getElementById("img").addEventListener ( "change", handleSelectImage )
+    const DEBUG = {
+        Log: true,
+        Error: true
+    };
+    console.log("Welcome to EDITHA KB145 PS 😉")
 
-	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
-	
-	/*-----------------------------------FUNCTIONS----------------------------------------*/
+    /*-------------------------------EVENT LISTENETRS-------------------------------------*/
 
-	/*
-		Search from result
-	*/
-	function searchText ( event ) {
-		if ( DEBUG.Log ) {
-			console.log( event )
-		}
+    /*
+    	get all submit button
+    	like upload english and upload telugu
+     	and add event listener of click for uploading
+    	the user selected file via ajax
+    */
+    document.querySelectorAll("input[type=submit]").forEach(function(element) {
+        element.addEventListener("click", fetchResult)
+    })
 
-		let resultText = document.querySelector(".outputResult").innerText
+    document.getElementById("img").addEventListener("change", handleSelectImage)
 
-		// match all regex
-		let exp = new RegExp(event.srcElement.value, "ig")
-		let result = [...resultText.matchAll(exp)]
+    document.querySelector("#searchText").addEventListener("keyup", searchText)
 
-		if ( DEBUG.Log ) {
-			console.log(result)
-		}
+    /*-----------------------------------FUNCTIONS----------------------------------------*/
 
-	}
+    /*
+    	Search from result
+    */
+    function searchText(event) {
+        if (DEBUG.Log) {
+            console.log(event)
+        }
 
-	/*
-		Detect file select changes and update status
-	*/
-	function handleSelectImage( event ) {
-		
-		let statusElement = document.querySelector(".text.text-upload")
-		let choosenFile = event.srcElement.files[0]
-		let imgElement = document.querySelector("#inputImage")
-		
-		statusElement.innerHTML = "File: "+choosenFile.name
+        let resultText = document.querySelector(".outputResult").innerText
 
-		imgElement.src = URL.createObjectURL(choosenFile)
-		imgElement.onload = function() {
-			URL.revokeObjectURL(this.src)
-		}
-		// show filename
-		this.parentElement.classList.add("drop");
-		this.parentElement.classList.remove("drag");
-		
-	}
+        // match all regex
+        let exp = new RegExp(event.srcElement.value, "ig")
+        let result = [...resultText.matchAll(exp)]
 
-	/*
-		get the click event of input button
-		and make a ajax request to the server
-	*/
-	function fetchResult ( event ) {
+        if (DEBUG.Log) {
+            console.log(result)
+        }
 
-		// stop default operation
-		event.preventDefault();
+    }
 
-		let button = event.srcElement
-		let statusElement = document.querySelector(".text.text-upload")
-		let fileToUplaod = document.getElementById("img").files[0]
+    /*
+    	Detect file select changes and update status
+    */
+    function handleSelectImage(event) {
 
-		let formData = new FormData()
+        let statusElement = document.querySelector(".text.text-upload")
+        let choosenFile = event.srcElement.files[0]
+        let imgElement = document.querySelector("#inputImage")
 
-		// set the language and file to be parsed
-		formData.append(button.name,"1")
-		formData.append("file", fileToUplaod)
+        statusElement.innerHTML = "File: " + choosenFile.name
 
-		// initaiate the ajax request
-		let send = xhr(
-			'POST', '/',
+        imgElement.src = URL.createObjectURL(choosenFile)
+        imgElement.onload = function() {
+                URL.revokeObjectURL(this.src)
+            }
+            // show filename
+        this.parentElement.classList.add("drop");
+        this.parentElement.classList.remove("drag");
 
-			function handleProgress ( event ) {
-				let percentage = (event.loaded/event.total)*100
-				statusElement.innerHTML = 'Uploading File: '+parseInt(percentage)+'%'
-			},
+    }
 
-			function handleUploaded ( event ) {
-				statusElement.parentElement.classList.add("done")
+    /*
+    	get the click event of input button
+    	and make a ajax request to the server
+    */
+    function fetchResult(event) {
 
-				// show waiting after uploading image
-				// and tick animation is over
-				setTimeout(function startWaiting() {
-					statusElement.innerHTML = "Waiting For Result..."
-					statusElement.parentElement.classList.remove("done")
-				}, 2000)
+        // stop default operation
+        event.preventDefault();
 
-				if ( DEBUG.Log ) {
-					console.log("doone uploading")
-				}
-				
-			}
-		)
-		
-		// send the data to the server
-		send(formData)
-		.then(
-			function handleResponse( responseText ) {
-				
-				// reverse back the upload status
-				statusElement.innerHTML = ""
-				statusElement.parentElement.classList.remove("done")
-				statusElement.parentElement.classList.remove("drop")
+        let button = event.srcElement
+        let statusElement = document.querySelector(".text.text-upload")
+        let fileToUplaod = document.getElementById("img").files[0]
 
-				// do something for displaying the result
-				// temperory response display
-				document.querySelector(".outputResult").innerHTML = responseText
-				
-				if ( DEBUG.Log ) {
-					console.log ( responseText )
-				}
-				
-			}
-		)
-		.catch(
-			function handleError( status ) {
-				if ( DEBUG.Error ) {
-					console.error ( "Failed to get result", status, "😥" )
-				}
-			}
-		)
-		
-	}
+        let formData = new FormData()
 
-	/*
-		create a ajax request
-	*/
-	function xhr( type, url, progressEvent, loadEvent ) {
+        // set the language and file to be parsed
+        formData.append(button.name, "1")
+        formData.append("file", fileToUplaod)
 
-		let xhr = new XMLHttpRequest()
-		xhr.upload.addEventListener("progress", progressEvent )
-		xhr.upload.addEventListener("load", loadEvent )
-		
-		return function( data ) {
-			return new Promise( function (resolve, reject) {
-				
-				xhr.onreadystatechange = function() {
-					if ( xhr.status == 200 && xhr.readyState == 4 ) {
-						resolve ( xhr.responseText )
-					} if ( xhr.readyState == 4 ) {
-						reject ( xhr.status )
-					}
-				}
-				
-				xhr.open( type, url )
-				xhr.send( data )
-			})
-		}
+        // initaiate the ajax request
+        let send = xhr(
+            'POST', '/',
 
-	}
+            function handleProgress(event) {
+                let percentage = (event.loaded / event.total) * 100
+                statusElement.innerHTML = 'Uploading File: ' + parseInt(percentage) + '%'
+            },
+
+            function handleUploaded(event) {
+                statusElement.parentElement.classList.add("done")
+
+                // show waiting after uploading image
+                // and tick animation is over
+                setTimeout(function startWaiting() {
+                    statusElement.innerHTML = "Waiting For Result..."
+                    statusElement.parentElement.classList.remove("done")
+                }, 2000)
+
+                if (DEBUG.Log) {
+                    console.log("doone uploading")
+                }
+
+            }
+        )
+
+        // send the data to the server
+        send(formData)
+            .then(
+                function handleResponse(responseText) {
+
+                    // reverse back the upload status
+                    statusElement.innerHTML = ""
+                    statusElement.parentElement.classList.remove("done")
+                    statusElement.parentElement.classList.remove("drop")
+
+                    // do something for displaying the result
+                    // temperory response display
+                    document.querySelector(".outputResult").innerHTML = responseText
+
+                    if (DEBUG.Log) {
+                        console.log(responseText)
+                    }
+
+                }
+            )
+            .catch(
+                function handleError(status) {
+                    if (DEBUG.Error) {
+                        console.error("Failed to get result", status, "😥")
+                    }
+                }
+            )
+
+    }
+
+    /*
+    	create an ajax request
+    */
+    function xhr(type, url, progressEvent, loadEvent) {
+
+        let xhr = new XMLHttpRequest()
+        xhr.upload.addEventListener("progress", progressEvent)
+        xhr.upload.addEventListener("load", loadEvent)
+
+        return function(data) {
+            return new Promise(function(resolve, reject) {
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.status == 200 && xhr.readyState == 4) {
+                        resolve(xhr.responseText)
+                    }
+                    if (xhr.readyState == 4) {
+                        reject(xhr.status)
+                    }
+                }
+
+                xhr.open(type, url)
+                xhr.send(data)
+            })
+        }
+
+    }
 
 }
