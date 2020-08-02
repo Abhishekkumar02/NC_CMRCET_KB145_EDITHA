@@ -12,6 +12,8 @@
     <link href="../static/stylesheets/style.css" rel="stylesheet" />
     <script src="../static/js/script.js"></script>
     <title>Editha OCR</title>
+    <!-- font awesome cdn -->
+    <script src="https://use.fontawesome.com/b8829db1cc.js"></script>
 </head>
 
 <body>
@@ -43,12 +45,10 @@
         </nav>
         <hr>
 
-        <div class="row sectionDiv">
+        <div class="sectionDiv">
 
-            <div class="col-2 col-side">
-            </div>
-
-            <div class="col-content col-8">
+            <div class="img"></div>
+            <div class="introduction">
 
                 <h1>
                     Upload your file!
@@ -80,13 +80,13 @@
                             </div>
                         </div>
                         <button class="btn btn-primary btn-lg dropdown-submit">Submit</button>
+                    </div>
 
-                        <!--  -->
-                        <!-- <input type="submit" name="Telugu" value="Telugu Only" class="btn btn-primary btn-lg upload-btn">
+                    <!--  -->
+                    <!-- <input type="submit" name="Telugu" value="Telugu Only" class="btn btn-primary btn-lg upload-btn">
                         <input type="submit" name="English" value="English Only" class="btn btn-primary btn-lg upload-btn">
                         <input type="submit" name="Urdu" value="Urdu Only" class="btn btn-primary btn-lg upload-btn">
                         <br><br><input type="submit" name="Mixture" value="Mixture" class="btn btn-primary btn-lg upload-btn"> -->
-                    </div>
                 </form>
             </div>
         </div>
@@ -111,8 +111,43 @@
 
         <!-- about section -->
         <div class="jumbotron jumbotron-fluid" id="about">
+
             <div class="container mt-6">
-                <h1 class="display-6 mb-4">About Editha OCR</h1>
+                <h1 class="display-6 center about-h1">About Editha OCR</h1>
+                <div class="about-main center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div>
+                                    <i class="fa fa-desktop"></i>
+                                    <h5>Responsive</h5>
+                                    <p class="fa-p">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div>
+                                    <i class="fa fa-heart"></i>
+                                    <h5>Passion</h5>
+                                    <p class="fa-p">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div>
+                                    <i class="fa fa-diamond"></i>
+                                    <h5>Design</h5>
+                                    <p class="fa-p">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div>
+                                    <i class="fa fa-cog"></i>
+                                    <h5>Support</h5>
+                                    <p class="fa-p">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p class="lead">
                     Editha OCR is a free cross-platform online Optical Character Recognition (OCR) web application that extracts text from images or scanned documents (PDF). The user can search something from the extracted text or copy it for further processing.
                     <br> <br> Text images could be a screenshot of a digital camera or photocopy of a scanned document such as books, faxes, receipts, bank statements, contracts, bills, business cards, mails, passport, and IDs.
@@ -187,7 +222,7 @@
 
     <!-- footer section -->
     <div class="page-footer">
-        <a href="https://github.com/Abhishekkumar02/kb145_Editha"<p>Project Github</p></a>
+        <a href="https://github.com/Abhishekkumar02/kb145_Editha" <p>Project Github</p></a>
     </div>
 
     <script src="../static/js/upload-btn.js"></script>
