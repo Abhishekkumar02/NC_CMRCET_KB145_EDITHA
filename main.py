@@ -68,7 +68,10 @@ def upload_file():
                     text = tess.image_to_string(page, lang=langToProcess)
                     pdf_text += text
 
-                return render_template('success.html', filename=filename, text=pdf_text)
+                if request.form.get("ajax"):
+                    return pdf_text
+                else:
+                    return render_template('success.html', filename=filename, text=pdf_text)
             # for images
             else:
 
