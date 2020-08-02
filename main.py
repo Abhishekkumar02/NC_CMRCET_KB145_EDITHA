@@ -1,9 +1,6 @@
 import os
-from pdf2image import convert_from_path
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
-import logging
-from logging.handlers import RotatingFileHandler
 import pytesseract as tess
 if os.name == 'nt':
     tess.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
@@ -13,19 +10,14 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = dir_path + '/static/images'
 UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-file_EXTENSIONS = set(['pdf'])
+
 app = Flask(__name__)
-logging.basicConfig(level=logging.DEBUG)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_FOLDER_PDF'] = UPLOAD_FOLDER_PDF
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def pdf_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in file_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
