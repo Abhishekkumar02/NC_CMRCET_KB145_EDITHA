@@ -11,12 +11,13 @@ from PIL import Image
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = dir_path + '/static/images'
+UPLOAD_FOLDER_PDF = dir_path + '/static/pdf'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 file_EXTENSIONS = set(['pdf'])
 app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+app.config['UPLOAD_FOLDER_PDF'] = UPLOAD_FOLDER_PDF
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -40,9 +41,9 @@ def upload_file():
         if file and allowed_file(file.filename):
             if pdf_file(file.filename):
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER_PDF'], filename))
                 app.logger.info('File name  %s', filename)
-                pdf_data = 'static/images/'+ filename
+                pdf_data = 'static/pdf/'+ filename
                 pdf_text=""
                 langToProcess = ""
                 pages = convert_from_path(pdf_data, poppler_path= r'poppler/bin')
