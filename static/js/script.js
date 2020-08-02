@@ -90,7 +90,16 @@ window.onload = function() {
 
 		let button = event.srcElement
 		let statusElement = document.querySelector(".text.text-upload")
-		let fileToUplaod = document.getElementById("img").files[0]
+		let fileElement = document.getElementById("img")
+
+		// if no file selected
+		if ( fileElement.files.length == 0 ) {
+			statusElement.previousElementSibling.innerHTML = "Please Select or DROP a File"
+			statusElement.previousElementSibling.classList.add("shake")
+			return
+		}
+		
+		fileToUplaod = fileElement.files[0]
 
 		let formData = new FormData()
 
@@ -134,10 +143,11 @@ window.onload = function() {
 				statusElement.innerHTML = ""
 				statusElement.parentElement.classList.remove("done")
 				statusElement.parentElement.classList.remove("drop")
+				fileElement.value = ''
 
 				// do something for displaying the result
 				// temperory response display
-				document.querySelector(".outputResult").innerHTML = responseText
+				document.querySelector(".outputResult").innerHTML = "<pre>"+responseText+"</pre>"
 				
 				if ( DEBUG.Log ) {
 					console.log ( responseText )

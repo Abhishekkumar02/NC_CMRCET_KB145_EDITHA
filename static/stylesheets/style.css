@@ -1,3 +1,6 @@
+* {
+    border: 1px solid #333;
+}
 body {
     background-color: rgb(236, 236, 236);
     font-family: 'Raleway', sans-serif;
@@ -283,11 +286,10 @@ hr {
 
 /* result section */
 
-.result {
-    font-size: 1.5rem;
-    margin: 10rem auto;
-    text-align: center;
-    /* border: 1px solid black; */
+section.result {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
 }
 
 
