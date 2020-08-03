@@ -35,6 +35,8 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 * Upload the file to perform the OCR operation! 
 
+* We Added presentation in presentation dir in code!  
+
 ---
 
 # Screenshots
