@@ -23,6 +23,15 @@ open terminal in linux(Debian Based) or command prompt in windows
 	>
 	> cd kb145_Editha
 
+* make virtual environment (optional)
+	* linux
+		> sudo apt install python3-venv
+		> python3 -m evenv my-project-env
+		> source my-project-env/bin/activate
+	* windows
+		> python3 -m evenv my-project-env
+		> source my-project-env/bin/activate
+
 * start the server
 	* linux
 		> ./main.sh
