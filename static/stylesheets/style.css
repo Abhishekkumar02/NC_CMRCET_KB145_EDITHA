@@ -464,7 +464,7 @@ section.result>div.leftInput>span {
 
 .searchField>.searchIcon {
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 10px;
     transform: translateY(-50%);
 }
@@ -553,6 +553,38 @@ section.result>div.leftInput>span {
 
 
 /*  team section */
+
+.avatar.one {
+    background-image: url("../images/avatar-1.jpeg");
+}
+
+.avatar.two {
+    background-image: url("../images/avatar-2.jpeg");
+}
+
+.avatar.three {
+    background-image: url("../images/avatar-3.jpeg");
+}
+
+.avatar.four {
+    background-image: url("../images/avatar-4.jpg");
+}
+
+.avatar.five {
+    background-image: url("../images/avatar-5.jpg");
+}
+
+.avatar.six {
+    background-image: url("../images/avatar-6.jpeg");
+}
+
+.avatar {
+    filter: grayscale(100%);
+    height: 20rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: contain;
+}
 
 .team {
     margin-bottom: 3rem;
