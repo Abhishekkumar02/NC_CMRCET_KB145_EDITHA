@@ -70,6 +70,11 @@ window.onload = function() {
 	// on lang change
 	document.querySelector(".recLang").addEventListener("change", handleLangChange)
 
+	// initiate tooltip
+	// document.querySelectorAll(".tolltip").forEach( function handleToolTip( element ) {
+	// 	element.tooltip()
+	// })
+
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
 
 	function handleDownloadData( event ) {
