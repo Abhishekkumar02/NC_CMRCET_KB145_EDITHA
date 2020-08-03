@@ -67,7 +67,7 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 ### Pdf File:
 
-![ResultPdf](screenshots/result_pdf.jpeg)
+![ResultPdf](screenshots/result_pdff.jpeg)
 
 ## Searching:
 
