@@ -34,3 +34,16 @@ open terminal in linux(Debian Based) or command prompt in windows
 * select your file and the desired language
 
 * Upload the file to perform the OCR operation! 
+
+---
+
+# Screenshots
+
+## Homepage:
+
+![HOME](screenshots/homepage.png)
+
+## Result:
+
+![Result](screenshots/result.png)
+
