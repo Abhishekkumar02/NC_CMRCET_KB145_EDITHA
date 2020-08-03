@@ -45,14 +45,17 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 ## Result:
 
-![Result](screenshots/result.png)
-
-## Searching:
-
 ### Image File:
 
-![SearchImg](screenshots/search_image.png)
+![ResultImg](screenshots/result_image.png)
 
 ### Pdf File:
 
-![SearchPdf](screenshots/search_pdf.jpeg)
+![ResultPdf](screenshots/result_pdf.jpeg)
+
+## Searching:
+
+![SearchImg](screenshots/search_image.png)
+
+
+
