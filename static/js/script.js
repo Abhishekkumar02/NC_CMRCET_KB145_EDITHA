@@ -19,6 +19,7 @@ window.onload = function() {
 		Error: true
 	};
 	let resultText = ''
+	let isSpeachOn = false
 	console.log("Welcome to EDITHA KB145 PS 😉")
 	
 	/*-------------------------------EVENT LISTENETRS-------------------------------------*/
@@ -34,7 +35,11 @@ window.onload = function() {
 	document.getElementById("img").addEventListener ( "change", handleSelectImage )
 
 	// event on search from result
-	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
+	document.querySelector("#searchText").addEventListener ( "change", searchText )
+	document.querySelector("#searchText").addEventListener ( "keyup", function handleKeyUp(event) {
+		let changeEvent = new Event('change');
+		event.srcElement.dispatchEvent(changeEvent);
+	})
 
 	// event on selecting drop down
 	document.querySelector("div.dropdown-menu").addEventListener( "click", handleLangSelect )
@@ -59,7 +64,153 @@ window.onload = function() {
 		event.srcElement.classList.add("green")
 	})
 
+	// voice rec
+	document.querySelector(".startStopIcon").addEventListener("click", handleVoiceButton)
+
+	// on lang change
+	document.querySelector(".recLang").addEventListener("change", handleLangChange)
+
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
+
+	/*
+		voice recog function recturn the controlles for
+		start/stop/changlang of the speach recognition
+	*/
+	function makeSpeachRecog ( onres, onend ) {
+
+			// is restart required
+			let restart = false
+			// default current language
+			currentLang = 'English'
+		
+			// initiate speacg recognition
+			var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+			var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+			var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+			var grammar = '#JSGF V1.0 UTF-8';
+
+			var recognition = new SpeechRecognition();
+			var speechRecognitionList = new SpeechGrammarList();
+			speechRecognitionList.addFromString(grammar, 1);
+			recognition.grammars = speechRecognitionList;
+			recognition.continuous = true;
+			
+			// set default language
+			recognition.lang = 'en-US';
+			
+			recognition.interimResults = true;
+			recognition.maxAlternatives = 1;
+
+			recognition.onresult = function ( event ) {
+				let resCount = event.results.length
+				let str=''
+				for ( let i = 0; i < resCount; i++ ) {
+					str += event.results[i][0].transcript
+				}
+				onres(str)
+			}
+			
+			recognition.onend = function() {
+				if ( restart ) {
+					recognition.start()
+					restart = false
+				}	else {
+					recognition.stop()
+					onend()
+				}
+			}
+			
+			// return callback functions
+			return {
+				startSpeach: function startSpeach() { 
+					recognition.start()
+				},
+				setLang: function setLang( lang ) {
+					if ( lang == "Telugu" ) {
+						recognition.lang = 'te-IN'
+					} else if ( lang == 'English' ) {
+						recognition.lang = 'en-IN'
+					} else {
+						recognition.lang = 'ur-IN'
+					}
+				},
+				endSpeach: function endSpeach() {
+					recognition.stop()
+				},
+				getCurrentLang: function getCurrentLang() {
+					return currentLang
+				},
+				restartSpeach: function restartSpeach() {
+					restart = true
+				}
+			}
+			
+	}
+	
+	// create a speach object
+	const speach = makeSpeachRecog ( handleSpeachData, handleSpeachEnd )
+	
+	// handle when voice button is clicked
+	function handleVoiceButton () {
+		let element = document.querySelector(".startStopIcon")
+		if ( !isSpeachOn ) {
+			isSpeachOn = true
+			handleLangChange(true)
+			element.innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i>'
+		} else {
+			speach.endSpeach()
+			isSpeachOn = false
+			element.innerHTML = '<i class="fa fa-microphone-slash" aria-hidden="true"></i>'
+		}
+
+	}
+	
+	// handle when language is changed from dropdown
+	// menu of speach recogination
+	function handleLangChange (start) {
+		if ( isSpeachOn ) {
+			let selLang = document.querySelector(".recLang").value
+			speach.endSpeach()
+			speach.setLang ( selLang )
+			
+			// first time ?
+			if ( start === true ) {
+				speach.startSpeach()
+			} else {
+				speach.restartSpeach()
+			}
+
+		}
+	}
+
+	// handle the data from the speach recogination
+	function handleSpeachData ( data ) {
+		
+		let inputElement = document.getElementById("searchText")
+
+		// disable the input field and
+		// set the data
+		inputElement.disable = true
+		inputElement.value = data
+		
+		// trigger the change event
+		let changeEvent = new Event('change');
+		inputElement.dispatchEvent(changeEvent);
+		
+	}
+	
+	function handleSpeachEnd () {
+		
+		let inputElement = document.getElementById("searchText")
+		
+		// enable the input field
+		inputElement.disable = false
+
+		// change the mic back to slash
+		document.querySelector(".startStopIcon").innerHTML = '<i class="fa fa-microphone-slash" aria-hidden="true"></i>'
+		
+	}
 	
 	/*
 		handle the click event on language selection
