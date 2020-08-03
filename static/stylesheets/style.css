@@ -478,18 +478,44 @@ section.result>div.leftInput>span {
     /* transform: translateY(-50%); */
 }
 
-.rightOutput>.copyToClipboard {
+/* speach */
+.rightOutput>.searchField>.speachRec {
+    display: flex;
+    align-items: center;
+}
+
+.rightOutput>.searchField>.speachRec>.recLang {
+    margin: 10px;
+}
+
+.rightOutput>.searchField>.speachRec>.startStopIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.rightElements {
+    display: flex;
+}
+
+.rightElements>div {
     padding: 7px 10px;
     cursor: pointer;
     user-select: none;
     background-color: #333;
     /* border: 1px solid #00000077; */
     color: #fff;
+    margin: 0 5px;
 }
-
-.rightOutput>.copyToClipboard.green {
+.rightElements>div.green {
     background-color: rgb(24, 224, 141);
 }
+
 
 .outputResult {
     padding: 20px;
@@ -579,7 +605,7 @@ section.result>div.leftInput>span {
 }
 
 .avatar {
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
     height: 20rem;
     background-size: cover;
     background-repeat: no-repeat;
