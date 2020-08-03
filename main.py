@@ -76,7 +76,7 @@ def upload_file():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 img = Image.open('static/images/' + filename)
-
+                
                 # set language for processing
                 if request.form.get("English"):
                     langToProcess = 'eng'
@@ -86,7 +86,6 @@ def upload_file():
                     langToProcess = 'urd'
                 else:
                     langToProcess = 'tel+eng+urd'
-
                 text = tess.image_to_string(img, lang=langToProcess)
                 src = '../static/images/' + filename
                 if request.form.get("ajax"):
@@ -94,7 +93,6 @@ def upload_file():
                 else:
                     return render_template('success.html', filename=filename, text=text, img=img, src=src)
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.debug = True
