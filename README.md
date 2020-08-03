@@ -27,13 +27,13 @@ open terminal in linux(Debian Based) or command prompt in windows
 	* linux
 		> sudo apt install python3-venv
 		>
-		> python3 -m evenv my-project-env
+		> python3 -m venv my-project-env
 		>
 		> source my-project-env/bin/activate
 	* windows
-		> python -m evenv my-project-env
+		> python -m venv my-project-env
 		>
-		> source my-project-env/bin/activate
+		> my-project-env/Script/activate
 
 * start the server
 	* linux
