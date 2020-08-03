@@ -15,7 +15,7 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: true,
+		Log: false,
 		Error: true
 	};
 	let resultText = ''
@@ -181,6 +181,9 @@ window.onload = function() {
 			speach.endSpeach()
 			isSpeachOn = false
 			element.innerHTML = '<i class="fa fa-microphone-slash" aria-hidden="true"></i>'
+			// reset input
+			document.getElementById("searchText").value = ''
+			searchText()
 		}
 
 	}
@@ -206,17 +209,22 @@ window.onload = function() {
 	// handle the data from the speach recogination
 	function handleSpeachData ( data ) {
 		
-		let inputElement = document.getElementById("searchText")
+		if ( !isSpeachOn ) {
+			let inputElement = document.getElementById("searchText")
 
-		// disable the input field and
-		// set the data
-		inputElement.disable = true
-		inputElement.value = data
-		
-		// trigger the change event
-		// let changeEvent = new Event('change');
-		// inputElement.dispatchEvent(changeEvent);
-		searchText()
+			// disable the input field and
+			// set the data
+			inputElement.disable = true
+			inputElement.value = data
+			
+			// trigger the change event
+			// let changeEvent = new Event('change');
+			// inputElement.dispatchEvent(changeEvent);
+			searchText()
+		} else {
+			document.getElementById("searchText").value = ''
+			searchText()
+		}
 		
 	}
 	
