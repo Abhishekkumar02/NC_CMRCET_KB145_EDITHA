@@ -15,7 +15,7 @@ window.onload = function() {
 	/*-----------------------------------VARIABLES----------------------------------------*/
 	
 	const DEBUG = {
-		Log: false,
+		Log: true,
 		Error: true
 	};
 	let resultText = ''
@@ -35,11 +35,7 @@ window.onload = function() {
 	document.getElementById("img").addEventListener ( "change", handleSelectImage )
 
 	// event on search from result
-	document.querySelector("#searchText").addEventListener ( "change", searchText )
-	document.querySelector("#searchText").addEventListener ( "keyup", function handleKeyUp(event) {
-		let changeEvent = new Event('change');
-		event.srcElement.dispatchEvent(changeEvent);
-	})
+	document.querySelector("#searchText").addEventListener ( "keyup", searchText )
 
 	// event on selecting drop down
 	document.querySelector("div.dropdown-menu").addEventListener( "click", handleLangSelect )
@@ -53,6 +49,7 @@ window.onload = function() {
 		event.srcElement.parentElement.querySelector("#searchText").value = ''
 		document.getElementById("noOfSearch").innerHTML = ''
 		document.getElementById("fileName").innerHTML = ''
+		document.getElementById("copyToClipboard").classList.remove("green")
 		resultText = ''
 		
 	})
@@ -64,6 +61,9 @@ window.onload = function() {
 		event.srcElement.classList.add("green")
 	})
 
+	// download to txt file
+	document.getElementById("downloadTxt").addEventListener("click", handleDownloadData)
+
 	// voice rec
 	document.querySelector(".startStopIcon").addEventListener("click", handleVoiceButton)
 
@@ -72,6 +72,20 @@ window.onload = function() {
 
 	/*-----------------------------------FUNCTIONS----------------------------------------*/
 
+	function handleDownloadData( event ) {
+		let filename = document.getElementById("fileName").innerText + '.txt'
+		let element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + resultText );
+		element.setAttribute('download', filename);
+	
+		element.style.display = 'none';
+		document.body.appendChild(element);
+	
+		element.click();
+	
+		document.body.removeChild(element);
+	}
+	
 	/*
 		voice recog function recturn the controlles for
 		start/stop/changlang of the speach recognition
@@ -195,8 +209,9 @@ window.onload = function() {
 		inputElement.value = data
 		
 		// trigger the change event
-		let changeEvent = new Event('change');
-		inputElement.dispatchEvent(changeEvent);
+		// let changeEvent = new Event('change');
+		// inputElement.dispatchEvent(changeEvent);
+		searchText()
 		
 	}
 	
@@ -279,7 +294,7 @@ window.onload = function() {
 
 		let countElement = document.getElementById("noOfSearch")
 		
-		let searchText = event.srcElement.value.trim()
+		let searchText = document.getElementById("searchText").value.trim()
 		if ( searchText.length == '' ) {
 			makeResult ( resultText, true )
 			countElement.innerHTML = ''

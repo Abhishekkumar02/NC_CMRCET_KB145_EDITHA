@@ -478,10 +478,6 @@ section.result>div.leftInput>span {
     /* transform: translateY(-50%); */
 }
 
-.rightOutput>.copyToClipboard.green {
-    background-color: rgb(24, 224, 141);
-}
-
 /* speach */
 .rightOutput>.searchField>.speachRec {
     display: flex;
@@ -515,6 +511,9 @@ section.result>div.leftInput>span {
     /* border: 1px solid #00000077; */
     color: #fff;
     margin: 0 5px;
+}
+.rightElements>div.green {
+    background-color: rgb(24, 224, 141);
 }
 
 
