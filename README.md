@@ -31,7 +31,9 @@ open terminal in linux(Debian Based) or command prompt in windows
 		>
 		> source my-project-env/bin/activate
 	* windows
-		> python -m venv my-project-env
+		> pip install virtualenv
+		>
+		> virtualenv my-project-env
 		>
 		> my-project-env/Script/activate
 
