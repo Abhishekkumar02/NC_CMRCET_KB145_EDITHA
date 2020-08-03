@@ -106,7 +106,7 @@
                     <input type="text" id="searchText" class="searchText" placeholder="Enter Text To be Searched..." />
                     <span id="noOfSearch"></span>
                 </div>
-                <div class="copyToClipboard" id="copyToClipboard"><i class="fa fa-files-o" aria-hidden="true"></i></div>
+                <div class="copyToClipboard" id="copyToClipboard" data-toggle="tooltip" title="Copy to Clipborad" ><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="Copy to Clipborad"></i></div>
             </div>
             <div class="outputResult"></div>
             <span title="close result panel" class="closeResult">&#x26CC;</span>
@@ -229,7 +229,11 @@
     <div class="page-footer ">
         <a href="https://github.com/Abhishekkumar02/kb145_Editha " <p>Project Github</p></a>
     </div>
-
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
     <script src="../static/js/upload-btn.js "></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
