@@ -23,6 +23,20 @@ open terminal in linux(Debian Based) or command prompt in windows
 	>
 	> cd kb145_Editha
 
+* make virtual environment (optional)
+	* linux
+		> sudo apt install python3-venv
+		>
+		> python3 -m venv my-project-env
+		>
+		> source my-project-env/bin/activate
+	* windows
+		> pip install virtualenv
+		>
+		> virtualenv my-project-env
+		>
+		> my-project-env/Script/activate
+
 * start the server
 	* linux
 		> ./main.sh
@@ -34,6 +48,8 @@ open terminal in linux(Debian Based) or command prompt in windows
 * select your file and the desired language
 
 * Upload the file to perform the OCR operation! 
+
+* We Added presentation in presentation dir in code!  
 
 ---
 
