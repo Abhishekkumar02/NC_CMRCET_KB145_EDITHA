@@ -47,3 +47,7 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 ![Result](screenshots/result.png)
 
+## Searching:
+
+![Search](screenshots/search.png)
+
