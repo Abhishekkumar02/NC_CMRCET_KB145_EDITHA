@@ -357,10 +357,11 @@ section.result {
 
 @keyframes showup {
     0% {
-        max-height: 0;
+        max-height: 200px;
         padding: 0;
     }
     100% {
+        padding: 90px 0 0 0;
         box-shadow: 0 0 10px 3px #fff;
     }
 }
@@ -391,6 +392,12 @@ section.result>div.resultText {
 }
 
 @keyframes hideshow {
+    0% {
+        overflow: hidden;
+    }
+    99% {
+        overflow: auto;
+    }
     100% {
         opacity: 1;
     }
@@ -429,6 +436,8 @@ section.result>div.leftInput>span {
     padding: 10px 20px;
     align-items: center;
     justify-content: space-between;
+    opacity: 0;
+    animation: hideshow 0.5s 0.3s linear forwards;
 }
 
 .rightOutput>.searchField {
