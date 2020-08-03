@@ -49,5 +49,10 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 ## Searching:
 
-![Search](screenshots/search.png)
+### Image File:
 
+![SearchImg](screenshots/search_image.png)
+
+### Pdf File:
+
+![SearchPdf](screenshots/search_pdf.png)
