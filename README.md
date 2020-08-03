@@ -26,10 +26,13 @@ open terminal in linux(Debian Based) or command prompt in windows
 * make virtual environment (optional)
 	* linux
 		> sudo apt install python3-venv
+		>
 		> python3 -m evenv my-project-env
+		>
 		> source my-project-env/bin/activate
 	* windows
 		> python3 -m evenv my-project-env
+		>
 		> source my-project-env/bin/activate
 
 * start the server
