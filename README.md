@@ -31,7 +31,7 @@ open terminal in linux(Debian Based) or command prompt in windows
 		>
 		> source my-project-env/bin/activate
 	* windows
-		> python3 -m evenv my-project-env
+		> python -m evenv my-project-env
 		>
 		> source my-project-env/bin/activate
 
