@@ -18,7 +18,7 @@
 
 open terminal in linux(Debian Based) or command prompt in windows
 
-* clone the repositry
+* clone the repository
 	> git clone https://github.com/Abhishekkumar02/kb145_Editha
 	>
 	> cd kb145_Editha
@@ -55,4 +55,4 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 ### Pdf File:
 
-![SearchPdf](screenshots/search_pdf.png)
+![SearchPdf](screenshots/search_pdf.jpeg)
