@@ -31,4 +31,6 @@ open terminal in linux(Debian Based) or command prompt in windows
 
 * open url http://127.0.0.1:5000 on your web browser
 
-* upload image or pdf and select the desired button!
+* select your file and the desired language
+
+* Upload the file to perform the OCR operation! 
