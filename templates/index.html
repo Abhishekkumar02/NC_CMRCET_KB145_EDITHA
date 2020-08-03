@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -68,7 +67,6 @@
                     </div>
 
                     <div class="uploadButtons">
-                        <!--  -->
                         <div data-current="All" class="btn-group dropdown-container">
                             <button type="button" class="btn  btn-lg dropdown-toggle upload-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid black">
                                 All Languages
@@ -81,17 +79,9 @@
                         </div>
                         <button class="btn btn-primary btn-lg dropdown-submit">Submit</button>
                     </div>
-
-                    <!--  -->
-                    <!-- <input type="submit" name="Telugu" value="Telugu Only" class="btn btn-primary btn-lg upload-btn">
-                        <input type="submit" name="English" value="English Only" class="btn btn-primary btn-lg upload-btn">
-                        <input type="submit" name="Urdu" value="Urdu Only" class="btn btn-primary btn-lg upload-btn">
-                        <br><br><input type="submit" name="Mixture" value="Mixture" class="btn btn-primary btn-lg upload-btn"> -->
                 </form>
             </div>
-
         </div>
-
 
         <!-- result in pop up windows -->
         <section class="result">
@@ -117,7 +107,7 @@
                 </div>
                 <div class="rightElements">
                     <div class="downloadTxt" id="downloadTxt"><i class="fa fa-download" aria-hidden="true"></i></div>
-                    <div class="copyToClipboard" id="copyToClipboard"><i class="fa fa-files-o" aria-hidden="true"></i></div>
+                    <div class="copyToClipboard" id="copyToClipboard" data-toggle="tooltip" title="Copy to Clipborad" ><i class="fa fa-files-o" aria-hidden="true" data-toggle="tooltip" title="Copy to Clipborad"></i></div>
                 </div>
             </div>
             <div class="outputResult"></div>
@@ -125,10 +115,8 @@
             <textarea id="originalData"></textarea>
         </section>
 
-
         <!-- about section -->
         <div class="jumbotron jumbotron-fluid" id="about">
-
             <div class="container mt-6">
                 <h1 class="display-6 center about-h1">About Editha OCR</h1>
                 <div class="about-main center">
@@ -241,7 +229,11 @@
     <div class="page-footer ">
         <a href="https://github.com/Abhishekkumar02/kb145_Editha " <p>Project Github</p></a>
     </div>
-
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+        </script>
     <script src="../static/js/upload-btn.js "></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -249,5 +241,4 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
 </body>
-
 </html>
